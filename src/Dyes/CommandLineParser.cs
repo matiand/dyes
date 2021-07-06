@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using Dyes.Commands;
 
 namespace Dyes
@@ -31,5 +32,11 @@ namespace Dyes
 
             throw new ArgumentException("Wrong command");
         }
+
+        // private Color ParseColor(string)
+        // {
+        //     var a = new Color();
+        //     a.
+        // }
     }
 }
