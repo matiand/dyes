@@ -4,8 +4,20 @@ using Dyes.Commands;
 
 namespace Dyes
 {
-    public class CommandLineParser
+    public class CommandLineParser : IParser<string[], ICommand>
     {
+        private readonly IParser<string, Color> _colorParser;
+
+        public CommandLineParser(IParser<string, Color> colorParser)
+        {
+            _colorParser = colorParser;
+        }
+
+        public CommandLineParser()
+        {
+            _colorParser = new ColorParser();
+        }
+
         public ICommand Parse(string[] args)
         {
             var cmd = args[0];
@@ -23,11 +35,21 @@ namespace Dyes
                 case "check-truecolor-support":
                     return new CheckTrueColorSupport();
                 case "view":
-                    return new ViewCmd();
+                {
+                    var color = _colorParser.Parse(args[1]);
+                    return new ViewCmd(color);
+                }
                 case "copy":
-                    return new CopyCmd();
+                {
+                    var color = _colorParser.Parse(args[1]);
+                    return new CopyCmd(color);
+                }
                 case "convert":
-                    return new ConvertCmd();
+                {
+                    var color = _colorParser.Parse(args[1]);
+                    var notation = ParseColorNotation(args[2]);
+                    return new ConvertCmd(color, notation);
+                }
             }
 
             throw new ArgumentException("Wrong command");

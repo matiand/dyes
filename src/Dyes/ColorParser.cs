@@ -7,7 +7,7 @@ using Hsluv;
 
 namespace Dyes
 {
-    public class ColorParser
+    public class ColorParser : IParser<string, Color>
     {
         private readonly Regex _hexPattern = new(@"^#(?:[0-9a-fA-F]{3}){1,2}$");
         private readonly Regex _rgbPattern = new(@"^rgb\((?<red>\d+)[,\s]+(?<green>\d+)[,\s]+(?<blue>\d+)\)$");
