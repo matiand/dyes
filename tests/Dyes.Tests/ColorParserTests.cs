@@ -135,5 +135,19 @@ namespace Dyes.Tests
                 Assert.Equal(expectedHpluv, actualHpluv);
             }
         }
+
+        [Theory]
+        [InlineData("hsl(13 34% 44.4%)")]
+        [InlineData("hsluv(13 34% 44.4%)")]
+        [InlineData("hpluv(13 34% 44.4%)")]
+        [InlineData("rgb(13 80 90)")]
+        public void SupportsCssVariationSyntax(string input)
+        {
+            var parser = new ColorParser();
+            
+            var color = parser.Parse(input);
+
+            Assert.IsType<Color>(color);
+        }
     }
 }
