@@ -33,10 +33,15 @@ namespace Dyes
             throw new ArgumentException("Wrong command");
         }
 
-        // private Color ParseColor(string)
-        // {
-        //     var a = new Color();
-        //     a.
-        // }
+        private ColorNotation ParseColorNotation(string input) =>
+            input.ToLowerInvariant() switch
+            {
+                "hex" => ColorNotation.Hex,
+                "rgb" => ColorNotation.Rgb,
+                "hsl" => ColorNotation.Hsl,
+                "hsluv" => ColorNotation.Hsluv,
+                "hpluv" => ColorNotation.Hpluv,
+                _ => throw new ArgumentException("Wrong color notation keyword")
+            };
     }
 }

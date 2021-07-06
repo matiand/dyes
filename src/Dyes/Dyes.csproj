@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Ardalis.SmartEnum" Version="2.0.1" />
         <PackageReference Include="ColorMinePortable" Version="2.0.1" />
         <PackageReference Include="Hsluv" Version="1.0.2" />
     </ItemGroup>
