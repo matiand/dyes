@@ -7,7 +7,7 @@ namespace Dyes.Commands
 {
     public class CheckTrueColorSupport : ICommand
     {
-        public void Run(IWriter writer)
+        public void Run(IWriter writer, bool isOutputRedirected)
         {
             writer.WriteLine("Your terminal supports TrueColor if these colors are smooth");
             for (int i = 0; i < 360; i++)

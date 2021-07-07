@@ -15,8 +15,14 @@ namespace Dyes.Commands
             Color = color;
         }
 
-        public void Run(IWriter writer)
+        public void Run(IWriter writer, bool isOutputRedirected)
         {
+            if (isOutputRedirected)
+            {
+                writer.WriteLine(ColorNotation.Hex.Stringify(Color));
+                return;
+            }
+
             var notations = new List<ColorNotation>
             {
                 ColorNotation.Hex,
@@ -25,7 +31,7 @@ namespace Dyes.Commands
                 ColorNotation.Hsluv,
                 ColorNotation.Hpluv
             };
-            
+
             foreach (var colorNotation in notations)
             {
                 writer.WriteColor(Color, 12);

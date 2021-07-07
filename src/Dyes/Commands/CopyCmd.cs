@@ -1,4 +1,3 @@
-using System.Drawing;
 using TextCopy;
 
 namespace Dyes.Commands
@@ -12,7 +11,7 @@ namespace Dyes.Commands
             TextToCopy = textToCopy;
         }
 
-        public void Run(IWriter writer)
+        public void Run(IWriter writer, bool isOutputRedirected)
         {
             ClipboardService.SetText(TextToCopy);
             writer.WriteLine($"Copied {TextToCopy}");

@@ -14,7 +14,7 @@ namespace Dyes.Commands
             ColorNotation = colorNotation;
         }
 
-        public void Run(IWriter writer)
+        public void Run(IWriter writer, bool isOutputRedirected)
         {
             writer.WriteLine(ColorNotation.Stringify(Color));
         }

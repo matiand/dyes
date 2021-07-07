@@ -12,10 +12,15 @@ namespace Dyes
             var cliParser = new CommandLineParser(colorParser);
             var consoleWriter = new ConsoleWriter();
 
+            if (Console.IsInputRedirected)
+            {
+                args = args.Append(Console.ReadLine()).ToArray();
+            }
+
             try
             {
                 var cmd = cliParser.Parse(args);
-                cmd.Run(consoleWriter);
+                cmd.Run(consoleWriter, Console.IsOutputRedirected);
             }
             catch (ArgumentException e)
             {

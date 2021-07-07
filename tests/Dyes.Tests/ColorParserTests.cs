@@ -24,7 +24,6 @@ namespace Dyes.Tests
             }
 
             [Theory]
-            [InlineData("afede1")]
             [InlineData("#-1afde1")]
             [InlineData("#ffeed")]
             [InlineData("#ffed")]
