@@ -33,7 +33,7 @@ namespace Dyes
                 case "-v":
                     return new VersionCmd();
                 case "check-truecolor-support":
-                    return new CheckTrueColorSupport();
+                    return new CheckTrueColorSupportCmd();
                 case "view":
                 {
                     var color = _colorParser.Parse(args[1]);

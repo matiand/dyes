@@ -5,7 +5,7 @@ using Color = System.Drawing.Color;
 
 namespace Dyes.Commands
 {
-    public class CheckTrueColorSupport : ICommand
+    public class CheckTrueColorSupportCmd : ICommand
     {
         public void Run(IWriter writer, bool isOutputRedirected)
         {
