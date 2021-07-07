@@ -1,8 +1,8 @@
 namespace Dyes.Commands
 {
-    public class HelpCmd:ICommand
+    public class HelpCmd : ICommand
     {
-        public void Run()
+        public void Run(IWriter writer)
         {
             throw new System.NotImplementedException();
         }

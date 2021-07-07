@@ -13,7 +13,7 @@ namespace Dyes
         private readonly Regex _rgbPattern = new(@"^rgb\((?<red>\d+)[,\s]+(?<green>\d+)[,\s]+(?<blue>\d+)\)$");
 
         private readonly Regex _hslPattern =
-            new(@"^(hsl|hpluv|hsluv)\((?<hue>.+?)[,\s]+(?<sat>.+?)%[,\s]+(?<light>.+?)%\)$");
+            new(@"^(hsl|hpluv|hsluv)\((?<hue>.+?)[,\s]+(?<sat>.+?)%?[,\s]+(?<light>.+?)%\)$");
 
         public Color Parse(string input)
         {

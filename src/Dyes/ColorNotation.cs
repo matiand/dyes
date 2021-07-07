@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.Drawing;
 using Ardalis.SmartEnum;
+using ColorMine.ColorSpaces;
+using Hsluv;
 
 namespace Dyes
 {
@@ -25,7 +28,8 @@ namespace Dyes
 
             public override string Stringify(Color color)
             {
-                throw new System.NotImplementedException();
+                var hexColor = new Rgb {R = color.R, G = color.G, B = color.B}.To<Hex>();
+                return hexColor.Code;
             }
         }
 
@@ -37,7 +41,7 @@ namespace Dyes
 
             public override string Stringify(Color color)
             {
-                throw new System.NotImplementedException();
+                return $"rgb({color.R}, {color.G}, {color.B})";
             }
         }
 
@@ -49,7 +53,8 @@ namespace Dyes
 
             public override string Stringify(Color color)
             {
-                throw new System.NotImplementedException();
+                return
+                    $"hsl({color.GetHue():N0}, {(color.GetSaturation() * 100):N0}%, {(color.GetBrightness() * 100):N0}%)";
             }
         }
 
@@ -61,7 +66,10 @@ namespace Dyes
 
             public override string Stringify(Color color)
             {
-                throw new System.NotImplementedException();
+                // RgbToHsluv requires rgb values in 0-1 range
+                var hslColor = HsluvConverter.RgbToHsluv(new List<double>
+                    {color.R / 256.0, color.G / 256.0, color.B / 256.0});
+                return $"hsluv({hslColor[0]:N0}, {hslColor[1]:N0}%, {hslColor[2]:N0}%)";
             }
         }
 
@@ -73,7 +81,10 @@ namespace Dyes
 
             public override string Stringify(Color color)
             {
-                throw new System.NotImplementedException();
+                // RgbToHpluv requires rgb values in 0-1 range
+                var hplColor = HsluvConverter.RgbToHpluv(new List<double>
+                    {color.R / 256.0, color.G / 256.0, color.B / 256.0});
+                return $"hpluv({hplColor[0]:N0}, {hplColor[1]:N0}, {hplColor[2]:N0}%)";
             }
         }
     }

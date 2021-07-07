@@ -2,7 +2,7 @@ using System.Drawing;
 
 namespace Dyes.Commands
 {
-    public class CopyCmd:ICommand
+    public class CopyCmd : ICommand
     {
         public Color Color { get; }
 
@@ -11,7 +11,7 @@ namespace Dyes.Commands
             Color = color;
         }
 
-        public void Run()
+        public void Run(IWriter writer)
         {
             throw new System.NotImplementedException();
         }

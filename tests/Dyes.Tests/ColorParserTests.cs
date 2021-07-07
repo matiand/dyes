@@ -95,7 +95,7 @@ namespace Dyes.Tests
             [InlineData("hsl(12, 32%, 44%)")]
             [InlineData("hsl(12.12, 32.444%, 44.1%)")]
             [InlineData("hsluv(360, 0%, 100%)")]
-            [InlineData("hpluv(44.4, 0%, 0%)")]
+            [InlineData("hpluv(44.4, 0, 0%)")]
             public void OnGoodInput_ReturnsColorInstance(string input)
             {
                 var parser = new ColorParser();
@@ -109,7 +109,7 @@ namespace Dyes.Tests
             [InlineData("hslu(12, 32)")]
             [InlineData("hsl(100, 100, 100)")]
             [InlineData("hsluv(361, 0%, -10%)")]
-            [InlineData("hpluv(-0.1, 0%, 101%)")]
+            [InlineData("hpluv(-0.1, 0, 101%)")]
             [InlineData("hpl(0, 0, 0")]
             public void OnWrongInput_ThrowsArgumentException(string input)
             {
@@ -127,7 +127,7 @@ namespace Dyes.Tests
                 var expectedHsl = Color.FromArgb(255, 153, 102, 51);
                 var actualHsluv = parser.Parse("hsluv(30, 50.1%, 39.9%)");
                 var expectedHsluv = Color.FromArgb(255, 128, 83, 65);
-                var actualHpluv = parser.Parse("hpluv(30, 50%, 40%)");
+                var actualHpluv = parser.Parse("hpluv(30, 50, 40%)");
                 var expectedHpluv = Color.FromArgb(255, 111, 90, 83);
 
                 Assert.Equal(expectedHsl, actualHsl);
@@ -139,12 +139,12 @@ namespace Dyes.Tests
         [Theory]
         [InlineData("hsl(13 34% 44.4%)")]
         [InlineData("hsluv(13 34% 44.4%)")]
-        [InlineData("hpluv(13 34% 44.4%)")]
+        [InlineData("hpluv(13 34 44.4%)")]
         [InlineData("rgb(13 80 90)")]
         public void SupportsCssVariationSyntax(string input)
         {
             var parser = new ColorParser();
-            
+
             var color = parser.Parse(input);
 
             Assert.IsType<Color>(color);

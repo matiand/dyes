@@ -2,9 +2,10 @@ using System.Drawing;
 
 namespace Dyes.Commands
 {
-    public class ConvertCmd:ICommand
+    public class ConvertCmd : ICommand
     {
         public Color Color { get; }
+
         public ColorNotation ColorNotation { get; }
 
         public ConvertCmd(Color color, ColorNotation colorNotation)
@@ -13,9 +14,9 @@ namespace Dyes.Commands
             ColorNotation = colorNotation;
         }
 
-        public void Run()
+        public void Run(IWriter writer)
         {
-            throw new System.NotImplementedException();
+            writer.WriteLine(ColorNotation.Stringify(Color));
         }
     }
 }

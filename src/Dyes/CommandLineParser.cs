@@ -46,8 +46,8 @@ namespace Dyes
                 }
                 case "convert":
                 {
-                    var color = _colorParser.Parse(args[1]);
-                    var notation = ParseColorNotation(args[2]);
+                    var notation = ParseColorNotation(args[1]);
+                    var color = _colorParser.Parse(args[2]);
                     return new ConvertCmd(color, notation);
                 }
             }

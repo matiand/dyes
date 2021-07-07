@@ -113,11 +113,11 @@ namespace Dyes.Tests
         public class ConvertCmd
         {
             [Theory]
-            [InlineData("convert", "#fff", "hex")]
-            [InlineData("convert", "#fff", "rgb")]
-            [InlineData("convert", "#fff", "hsl")]
-            [InlineData("convert", "#fff", "hsluv")]
-            [InlineData("convert", "#fff", "hpluv")]
+            [InlineData("convert", "hex", "#fff")]
+            [InlineData("convert", "rgb", "#fff")]
+            [InlineData("convert", "hsl", "#fff")]
+            [InlineData("convert", "hsluv", "#fff")]
+            [InlineData("convert", "hpluv", "#fff")]
             public void GivenMatchingInput_ReturnsConvertCmd(params string[] args)
             {
                 var colorParser = new ColorParser();
@@ -131,10 +131,10 @@ namespace Dyes.Tests
             }
 
             [Theory]
-            [InlineData("convert", "#ffff", "hex")]
-            [InlineData("convert", "#fff", "hexa")]
-            [InlineData("convert", "#fff", "rbb")]
-            [InlineData("convert", "#fff", "hsp")]
+            [InlineData("convert", "hex", "#ffff")]
+            [InlineData("convert", "hexa", "#fff")]
+            [InlineData("convert", "rbb", "#fff")]
+            [InlineData("convert", "hsp", "#fff")]
             public void GivenBadInput_ThrowsArgumentException(params string[] args)
             {
                 var colorParser = new ColorParser();
