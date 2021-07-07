@@ -73,7 +73,7 @@ namespace Dyes.Tests
 
                 var cmd = parser.Parse(args);
 
-                Assert.IsType<CheckTrueColorSupportCmd>(cmd);
+                Assert.IsType<Commands.CheckTrueColorSupportCmd>(cmd);
             }
         }
 
