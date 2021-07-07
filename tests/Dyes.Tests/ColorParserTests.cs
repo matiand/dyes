@@ -12,7 +12,8 @@ namespace Dyes.Tests
             [InlineData("#fafafa")]
             [InlineData("#fff")]
             [InlineData("#ABCDEF")]
-            [InlineData("#00A3D1")]
+            [InlineData("00A3D1")]
+            [InlineData("aaa")]
             public void OnGoodInput_ReturnsColorInstance(string input)
             {
                 var parser = new ColorParser();
@@ -29,6 +30,8 @@ namespace Dyes.Tests
             [InlineData("#ffed")]
             [InlineData("#ABGG11")]
             [InlineData("#ed221a1")]
+            [InlineData("eeff1")]
+            [InlineData("egg")]
             public void OnWrongInput_ThrowsArgumentException(string input)
             {
                 var parser = new ColorParser();

@@ -9,7 +9,7 @@ namespace Dyes
 {
     public class ColorParser : IParser<string, Color>
     {
-        private readonly Regex _hexPattern = new(@"^#(?:[0-9a-fA-F]{3}){1,2}$");
+        private readonly Regex _hexPattern = new(@"^#?(?:[0-9a-fA-F]{3}){1,2}$");
         private readonly Regex _rgbPattern = new(@"^rgb\((?<red>\d+)[,\s]+(?<green>\d+)[,\s]+(?<blue>\d+)\)$");
 
         private readonly Regex _hslPattern =
@@ -19,7 +19,8 @@ namespace Dyes
         {
             if (_hexPattern.IsMatch(input))
             {
-                return ColorTranslator.FromHtml(input);
+                var hexCode = input.Length is 3 or 6 ? $"#{input}" : input;
+                return ColorTranslator.FromHtml(hexCode);
             }
 
             if (_rgbPattern.IsMatch(input))
