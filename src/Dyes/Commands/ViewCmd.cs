@@ -6,6 +6,7 @@ using Color = System.Drawing.Color;
 
 namespace Dyes.Commands
 {
+    [Usage("view <color>", "View color and its info", "view rgb(40, 120, 100)")]
     public class ViewCmd : ICommand
     {
         public Color Color { get; }

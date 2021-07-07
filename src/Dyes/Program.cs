@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using Dyes.Commands;
 
 namespace Dyes
 {
@@ -8,15 +9,14 @@ namespace Dyes
     {
         static void Main(string[] args)
         {
-            var colorParser = new ColorParser();
-            var cliParser = new CommandLineParser(colorParser);
-            var consoleWriter = new ConsoleWriter();
-
             if (Console.IsInputRedirected)
             {
                 args = args.Append(Console.ReadLine()).ToArray();
             }
 
+            var colorParser = new ColorParser();
+            var cliParser = new CommandLineParser(colorParser);
+            var consoleWriter = new ConsoleWriter();
             try
             {
                 var cmd = cliParser.Parse(args);
@@ -24,12 +24,13 @@ namespace Dyes
             }
             catch (ArgumentException e)
             {
+                HelpCmd.PrintUsage(consoleWriter);
                 Console.WriteLine(e.Message);
                 Environment.Exit(1);
             }
-            catch (IndexOutOfRangeException e)
+            catch (IndexOutOfRangeException)
             {
-                Console.WriteLine(e.Message);
+                HelpCmd.PrintUsage(consoleWriter);
                 Environment.Exit(1);
             }
             catch (Exception e)

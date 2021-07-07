@@ -5,6 +5,7 @@ using Color = System.Drawing.Color;
 
 namespace Dyes.Commands
 {
+    [Usage("check-truecolor-support", "Checks if this terminal supports TrueColor")]
     public class CheckTrueColorSupportCmd : ICommand
     {
         public void Run(IWriter writer, bool isOutputRedirected)

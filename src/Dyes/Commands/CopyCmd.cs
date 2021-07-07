@@ -2,6 +2,7 @@ using TextCopy;
 
 namespace Dyes.Commands
 {
+    [Usage("copy <color>", "Copies given color to clipboard", "copy hsl(120, 50%, 50%)")]
     public class CopyCmd : ICommand
     {
         public string TextToCopy { get; }
