@@ -1,19 +1,21 @@
 using System.Drawing;
+using TextCopy;
 
 namespace Dyes.Commands
 {
     public class CopyCmd : ICommand
     {
-        public Color Color { get; }
+        public string TextToCopy { get; }
 
-        public CopyCmd(Color color)
+        public CopyCmd(string textToCopy)
         {
-            Color = color;
+            TextToCopy = textToCopy;
         }
 
         public void Run(IWriter writer)
         {
-            throw new System.NotImplementedException();
+            ClipboardService.SetText(TextToCopy);
+            writer.WriteLine($"Copied {TextToCopy}");
         }
     }
 }

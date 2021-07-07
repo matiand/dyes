@@ -29,7 +29,16 @@ namespace Dyes
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error: {e.Message}");
+                if (e.Message.Contains("xsel"))
+                {
+                    Console.WriteLine(
+                        "Looks like your are running under Linux. Package 'xsel' is required for copying to work.");
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {e.Message}");
+                }
+
                 Environment.Exit(1);
             }
         }

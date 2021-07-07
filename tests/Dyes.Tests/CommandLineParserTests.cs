@@ -98,6 +98,7 @@ namespace Dyes.Tests
         {
             [Theory]
             [InlineData("copy", "#fff")]
+            [InlineData("copy", "hsl(300 40% 25%)")]
             public void GivenMatchingInput_ReturnsCopyCmd(params string[] args)
             {
                 var colorParser = new ColorParser();
@@ -106,7 +107,7 @@ namespace Dyes.Tests
                 var cmd = parser.Parse(args);
 
                 Assert.IsType<Commands.CopyCmd>(cmd);
-                Assert.Equal(Color.White.ToArgb(), ((Commands.CopyCmd) cmd).Color.ToArgb());
+                Assert.Equal(args[1], ((Commands.CopyCmd) cmd).TextToCopy);
             }
         }
 

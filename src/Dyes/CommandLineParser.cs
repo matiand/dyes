@@ -41,8 +41,8 @@ namespace Dyes
                 }
                 case "copy":
                 {
-                    var color = _colorParser.Parse(args[1]);
-                    return new CopyCmd(color);
+                    var textToCopy = args[1];
+                    return new CopyCmd(textToCopy);
                 }
                 case "convert":
                 {
