@@ -29,7 +29,7 @@ namespace Dyes.Commands
 
         private static void PrintSupportedColorSyntax(IWriter writer)
         {
-            writer.WriteLine("\n  Supported colors syntax:");
+            writer.WriteLine("\n  Supported color syntax:");
             writer.WriteLine("\tHex: #ffee12, #ACF, ffee12, acf");
             writer.WriteLine("\tRgb: rgb(0, 0, 0), rgb(20 40 60)");
             writer.WriteLine("\tHsl: hsl(0, 0%, 0%), hsl(100 75% 50)");

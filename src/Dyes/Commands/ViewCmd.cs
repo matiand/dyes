@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Dyes.Commands
 {
-    [Usage("view <color>", "View color and its info", "view rgb(40, 120, 100)")]
+    [Usage("view <color>", "View color and show its value in other formats", "view rgb(40, 120, 100)")]
     public class ViewCmd : ICommand
     {
         public ViewCmd(Color color)
