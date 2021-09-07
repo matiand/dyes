@@ -1,0 +1,32 @@
+#!/bin/sh
+
+set -eu
+
+# A hook script to reformat code based on .editorconfig
+# Requires at least .NET 5
+# Called by "git commit" with no arguments.
+# The hook should exit with non-zero status after issuing an appropriate
+# message if it wants to stop the commit.
+
+echo "Launching pre-commit hook that runs JetBrains CodeCleanup cli tool"
+
+staged_files=$(git diff --name-only --cached --diff-filter=d)
+# skip if there are no csharp files in index
+if ! git diff --name-only --staged | grep -Eq '(\.cshtml|\.cs)$'; then
+    echo "Skipping code formatting, no csharp files were found in index"
+    sleep 1
+    exit 0
+fi
+
+dotnet tool restore
+
+# if you want to only reformat code add --profile=$jb_profile
+# jb_profile="Built-in: Reformat Code"
+include_string=$(echo "$staged_files" | sed ':a;N;$!ba;s/\n/;/g')
+dotnet jb cleanupcode *.sln --include="$include_string" --verbosity=ERROR
+
+echo "Restaging files"
+echo "$staged_files" | xargs -t -l git add
+
+echo "Precommit hook finished"
+sleep 1

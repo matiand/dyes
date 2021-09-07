@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
 using Dyes.Commands;
 
 namespace Dyes
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             if (Console.IsInputRedirected)
             {
@@ -26,12 +25,12 @@ namespace Dyes
             {
                 HelpCmd.PrintUsage(consoleWriter);
                 Console.WriteLine(e.Message);
-                Environment.Exit(1);
+                Environment.Exit(exitCode: 1);
             }
             catch (IndexOutOfRangeException)
             {
                 HelpCmd.PrintUsage(consoleWriter);
-                Environment.Exit(1);
+                Environment.Exit(exitCode: 1);
             }
             catch (Exception e)
             {
@@ -45,7 +44,7 @@ namespace Dyes
                     Console.WriteLine($"Error: {e.Message}");
                 }
 
-                Environment.Exit(1);
+                Environment.Exit(exitCode: 1);
             }
         }
     }

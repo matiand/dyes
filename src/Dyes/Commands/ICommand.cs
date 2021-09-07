@@ -1,5 +1,3 @@
-using System;
-
 namespace Dyes.Commands
 {
     public interface ICommand

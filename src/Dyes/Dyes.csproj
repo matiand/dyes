@@ -5,13 +5,13 @@
         <TargetFramework>net5.0</TargetFramework>
         <AssemblyVersion>0.0.1</AssemblyVersion>
         <AssemblyName>dyes</AssemblyName>
+        <EnableCodeStyleInBuild>true</EnableCodeStyleInBuild>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Ardalis.SmartEnum" Version="2.0.1"/>
         <PackageReference Include="ColorMinePortable" Version="2.0.1"/>
         <PackageReference Include="Hsluv" Version="1.0.2"/>
-        <PackageReference Include="Moq" Version="4.16.1"/>
         <PackageReference Include="Spectre.Console" Version="0.40.1-preview.0.13"/>
         <PackageReference Include="TextCopy" Version="4.3.1"/>
     </ItemGroup>

@@ -6,6 +6,20 @@ namespace Dyes.Tests
 {
     public class ColorParserTests
     {
+        [Theory]
+        [InlineData("hsl(13 34% 44.4%)")]
+        [InlineData("hsluv(13 34% 44.4%)")]
+        [InlineData("hpluv(13 34 44.4%)")]
+        [InlineData("rgb(13 80 90)")]
+        public void SupportsCssVariationSyntax(string input)
+        {
+            var parser = new ColorParser();
+
+            var color = parser.Parse(input);
+
+            Assert.IsType<Color>(color);
+        }
+
         public class HexColors
         {
             [Theory]
@@ -44,9 +58,9 @@ namespace Dyes.Tests
                 var parser = new ColorParser();
 
                 var actualLong = parser.Parse("#43afbb");
-                var expectedLong = Color.FromArgb(255, 67, 175, 187);
+                var expectedLong = Color.FromArgb(alpha: 255, red: 67, green: 175, blue: 187);
                 var actualShort = parser.Parse("#39f");
-                var expectedShort = Color.FromArgb(255, 51, 153, 255);
+                var expectedShort = Color.FromArgb(alpha: 255, red: 51, green: 153, blue: 255);
 
                 Assert.Equal(expectedLong, actualLong);
                 Assert.Equal(expectedShort, actualShort);
@@ -85,7 +99,7 @@ namespace Dyes.Tests
                 var parser = new ColorParser();
 
                 var actual = parser.Parse("rgb(67, 175, 187)");
-                var expected = Color.FromArgb(255, 67, 175, 187);
+                var expected = Color.FromArgb(alpha: 255, red: 67, green: 175, blue: 187);
 
                 Assert.Equal(expected, actual);
             }
@@ -126,30 +140,16 @@ namespace Dyes.Tests
                 var parser = new ColorParser();
 
                 var actualHsl = parser.Parse("hsl(30, 50%, 40%)");
-                var expectedHsl = Color.FromArgb(255, 153, 102, 51);
+                var expectedHsl = Color.FromArgb(alpha: 255, red: 153, green: 102, blue: 51);
                 var actualHsluv = parser.Parse("hsluv(30, 50.1%, 39.9%)");
-                var expectedHsluv = Color.FromArgb(255, 128, 83, 65);
+                var expectedHsluv = Color.FromArgb(alpha: 255, red: 128, green: 83, blue: 65);
                 var actualHpluv = parser.Parse("hpluv(30, 50, 40%)");
-                var expectedHpluv = Color.FromArgb(255, 111, 90, 83);
+                var expectedHpluv = Color.FromArgb(alpha: 255, red: 111, green: 90, blue: 83);
 
                 Assert.Equal(expectedHsl, actualHsl);
                 Assert.Equal(expectedHsluv, actualHsluv);
                 Assert.Equal(expectedHpluv, actualHpluv);
             }
-        }
-
-        [Theory]
-        [InlineData("hsl(13 34% 44.4%)")]
-        [InlineData("hsluv(13 34% 44.4%)")]
-        [InlineData("hpluv(13 34 44.4%)")]
-        [InlineData("rgb(13 80 90)")]
-        public void SupportsCssVariationSyntax(string input)
-        {
-            var parser = new ColorParser();
-
-            var color = parser.Parse(input);
-
-            Assert.IsType<Color>(color);
         }
     }
 }

@@ -1,6 +1,4 @@
-using System;
-using Spectre.Console;
-using Color = System.Drawing.Color;
+using System.Drawing;
 
 namespace Dyes
 {

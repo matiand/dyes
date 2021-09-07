@@ -1,20 +1,17 @@
-using System;
 using System.Collections.Generic;
-using ColorMine.ColorSpaces;
-using Spectre.Console;
-using Color = System.Drawing.Color;
+using System.Drawing;
 
 namespace Dyes.Commands
 {
     [Usage("view <color>", "View color and its info", "view rgb(40, 120, 100)")]
     public class ViewCmd : ICommand
     {
-        public Color Color { get; }
-
         public ViewCmd(Color color)
         {
             Color = color;
         }
+
+        public Color Color { get; }
 
         public void Run(IWriter writer, bool isOutputRedirected)
         {
@@ -30,12 +27,12 @@ namespace Dyes.Commands
                 ColorNotation.Rgb,
                 ColorNotation.Hsl,
                 ColorNotation.Hsluv,
-                ColorNotation.Hpluv
+                ColorNotation.Hpluv,
             };
 
             foreach (var colorNotation in notations)
             {
-                writer.WriteColor(Color, 12);
+                writer.WriteColor(Color, width: 12);
                 writer.WriteLine($"\t{colorNotation.Stringify(Color)}");
             }
         }

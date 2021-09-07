@@ -10,10 +10,11 @@ namespace Dyes
     public class ColorParser : IParser<string, Color>
     {
         private readonly Regex _hexPattern = new(@"^#?(?:[0-9a-fA-F]{3}){1,2}$");
-        private readonly Regex _rgbPattern = new(@"^rgb\((?<red>\d+)[,\s]+(?<green>\d+)[,\s]+(?<blue>\d+)\)$");
 
         private readonly Regex _hslPattern =
             new(@"^(hsl|hpluv|hsluv)\((?<hue>.+?)[,\s]+(?<sat>.+?)%?[,\s]+(?<light>.+?)%\)$");
+
+        private readonly Regex _rgbPattern = new(@"^rgb\((?<red>\d+)[,\s]+(?<green>\d+)[,\s]+(?<blue>\d+)\)$");
 
         public Color Parse(string input)
         {
@@ -49,16 +50,17 @@ namespace Dyes
 
             if (input.Contains("hsluv"))
             {
-                var hexString = HsluvConverter.HsluvToHex(new List<double> {hue, saturation, lightness});
-                return Parse(hexString);
-            }
-            else if (input.Contains("hpluv"))
-            {
-                var hexString = HsluvConverter.HpluvToHex(new List<double> {hue, saturation, lightness});
+                var hexString = HsluvConverter.HsluvToHex(new List<double> { hue, saturation, lightness });
                 return Parse(hexString);
             }
 
-            var hexColor = new Hsl() {H = hue, S = saturation / 100.0, L = lightness / 100.0}.To<Hex>();
+            if (input.Contains("hpluv"))
+            {
+                var hexString = HsluvConverter.HpluvToHex(new List<double> { hue, saturation, lightness });
+                return Parse(hexString);
+            }
+
+            var hexColor = new Hsl { H = hue, S = saturation / 100.0, L = lightness / 100.0 }.To<Hex>();
             return Parse(hexColor.Code);
         }
 
@@ -72,7 +74,7 @@ namespace Dyes
             var blue = int.Parse(match.Groups["blue"]
                 .Value);
 
-            return Color.FromArgb(255, red, green, blue);
+            return Color.FromArgb(alpha: 255, red, green, blue);
         }
     }
 }

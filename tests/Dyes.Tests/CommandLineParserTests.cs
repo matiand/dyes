@@ -1,7 +1,5 @@
 using System;
 using System.Drawing;
-using Dyes.Commands;
-using Moq;
 using Xunit;
 
 namespace Dyes.Tests
@@ -90,7 +88,7 @@ namespace Dyes.Tests
                 var cmd = parser.Parse(args);
 
                 Assert.IsType<Commands.ViewCmd>(cmd);
-                Assert.Equal(Color.White.ToArgb(), ((Commands.ViewCmd) cmd).Color.ToArgb());
+                Assert.Equal(Color.White.ToArgb(), ((Commands.ViewCmd)cmd).Color.ToArgb());
             }
         }
 
@@ -107,7 +105,7 @@ namespace Dyes.Tests
                 var cmd = parser.Parse(args);
 
                 Assert.IsType<Commands.CopyCmd>(cmd);
-                Assert.Equal(args[1], ((Commands.CopyCmd) cmd).TextToCopy);
+                Assert.Equal(args[1], ((Commands.CopyCmd)cmd).TextToCopy);
             }
         }
 
@@ -127,8 +125,8 @@ namespace Dyes.Tests
                 var cmd = parser.Parse(args);
 
                 Assert.IsType<Commands.ConvertCmd>(cmd);
-                Assert.Equal(Color.White.ToArgb(), ((Commands.ConvertCmd) cmd).Color.ToArgb());
-                Assert.IsAssignableFrom<ColorNotation>(((Commands.ConvertCmd) cmd).ColorNotation);
+                Assert.Equal(Color.White.ToArgb(), ((Commands.ConvertCmd)cmd).Color.ToArgb());
+                Assert.IsAssignableFrom<ColorNotation>(((Commands.ConvertCmd)cmd).ColorNotation);
             }
 
             [Theory]

@@ -6,15 +6,15 @@ namespace Dyes.Commands
         "convert hsl #fff")]
     public class ConvertCmd : ICommand
     {
-        public Color Color { get; }
-
-        public ColorNotation ColorNotation { get; }
-
         public ConvertCmd(Color color, ColorNotation colorNotation)
         {
             Color = color;
             ColorNotation = colorNotation;
         }
+
+        public Color Color { get; }
+
+        public ColorNotation ColorNotation { get; }
 
         public void Run(IWriter writer, bool isOutputRedirected)
         {

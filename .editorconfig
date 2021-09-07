@@ -1,0 +1,20 @@
+root = true
+[*]
+indent_size=4
+indent_style=space
+max_line_length=120
+end_of_line = lf
+insert_final_newline=true
+
+[*.cs]
+csharp_default_private_modifier=explicit
+csharp_braces_for_ifelse=required_for_multiline_statement
+csharp_for_built_in_types=use_var
+csharp_trailing_comma_in_multiline_lists=true
+csharp_object_creation_when_type_evident=target_typed
+csharp_place_attribute_on_same_line=never
+csharp_arguments_literal=named
+
+[*.{yml,yaml}]
+indent_size = 2
+indent_style = space

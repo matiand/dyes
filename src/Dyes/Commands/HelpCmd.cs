@@ -29,19 +29,19 @@ namespace Dyes.Commands
 
         private static void PrintSupportedColorSyntax(IWriter writer)
         {
-            writer.WriteLine($"\n  Supported colors syntax:");
-            writer.WriteLine($"\tHex: #ffee12, #ACF, ffee12, acf");
-            writer.WriteLine($"\tRgb: rgb(0, 0, 0), rgb(20 40 60)");
-            writer.WriteLine($"\tHsl: hsl(0, 0%, 0%), hsl(100 75% 50)");
-            writer.WriteLine($"\tHsluv: hsluv(0, 0%, 0%), hsluv(100 75% 50)");
-            writer.WriteLine($"\tHpluv: hpluv(0, 0, 0%), hpluv(100 225 50)");
+            writer.WriteLine("\n  Supported colors syntax:");
+            writer.WriteLine("\tHex: #ffee12, #ACF, ffee12, acf");
+            writer.WriteLine("\tRgb: rgb(0, 0, 0), rgb(20 40 60)");
+            writer.WriteLine("\tHsl: hsl(0, 0%, 0%), hsl(100 75% 50)");
+            writer.WriteLine("\tHsluv: hsluv(0, 0%, 0%), hsluv(100 75% 50)");
+            writer.WriteLine("\tHpluv: hpluv(0, 0, 0%), hpluv(100 225 50)");
         }
 
         private static IOrderedEnumerable<UsageAttribute> GetCmdUsages()
         {
             var commands = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(a => a.GetTypes())
-                .Where(t => (typeof(ICommand)).IsAssignableFrom(t) && !t.IsAbstract);
+                .Where(t => typeof(ICommand).IsAssignableFrom(t) && !t.IsAbstract);
 
             var usages =
                 commands.SelectMany(cmd => cmd.GetCustomAttributes())

@@ -55,15 +55,17 @@ namespace Dyes
             throw new ArgumentException("Wrong command");
         }
 
-        private ColorNotation ParseColorNotation(string input) =>
-            input.ToLowerInvariant() switch
+        private ColorNotation ParseColorNotation(string input)
+        {
+            return input.ToLowerInvariant() switch
             {
                 "hex" => ColorNotation.Hex,
                 "rgb" => ColorNotation.Rgb,
                 "hsl" => ColorNotation.Hsl,
                 "hsluv" => ColorNotation.Hsluv,
                 "hpluv" => ColorNotation.Hpluv,
-                _ => throw new ArgumentException("Wrong color notation keyword")
+                _ => throw new ArgumentException("Wrong color notation keyword"),
             };
+        }
     }
 }

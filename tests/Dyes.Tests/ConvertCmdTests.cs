@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Hsluv;
 using Moq;
 using Xunit;
 
@@ -15,10 +13,10 @@ namespace Dyes.Tests
         {
             var writerMock = new Mock<IWriter>();
             var parser = new CommandLineParser();
-            var cmd = parser.Parse(new[] {"convert", "hex", color});
+            var cmd = parser.Parse(new[] { "convert", "hex", color });
 
             cmd.Run(writerMock.Object);
-            var actual = writerMock.Invocations[0].Arguments[0];
+            var actual = writerMock.Invocations[index: 0].Arguments[index: 0];
 
             Assert.Equal(expected, actual);
         }
@@ -31,10 +29,10 @@ namespace Dyes.Tests
         {
             var writerMock = new Mock<IWriter>();
             var parser = new CommandLineParser();
-            var cmd = parser.Parse(new[] {"convert", "rgb", color});
+            var cmd = parser.Parse(new[] { "convert", "rgb", color });
 
             cmd.Run(writerMock.Object);
-            var actual = writerMock.Invocations[0].Arguments[0];
+            var actual = writerMock.Invocations[index: 0].Arguments[index: 0];
 
             Assert.Equal(expected, actual);
         }
@@ -47,10 +45,10 @@ namespace Dyes.Tests
         {
             var writerMock = new Mock<IWriter>();
             var parser = new CommandLineParser();
-            var cmd = parser.Parse(new[] {"convert", "hsl", color});
+            var cmd = parser.Parse(new[] { "convert", "hsl", color });
 
             cmd.Run(writerMock.Object);
-            var actual = writerMock.Invocations[0].Arguments[0];
+            var actual = writerMock.Invocations[index: 0].Arguments[index: 0];
 
             Assert.Equal(expected, actual);
         }
@@ -64,10 +62,10 @@ namespace Dyes.Tests
             var writerMock = new Mock<IWriter>();
             var parser = new CommandLineParser();
 
-            var cmd = parser.Parse(new[] {"convert", "hsluv", color});
+            var cmd = parser.Parse(new[] { "convert", "hsluv", color });
 
             cmd.Run(writerMock.Object);
-            var actual = writerMock.Invocations[0].Arguments[0];
+            var actual = writerMock.Invocations[index: 0].Arguments[index: 0];
 
             Assert.Equal(expected, actual);
         }
@@ -81,10 +79,10 @@ namespace Dyes.Tests
             var writerMock = new Mock<IWriter>();
             var parser = new CommandLineParser();
 
-            var cmd = parser.Parse(new[] {"convert", "hpluv", color});
+            var cmd = parser.Parse(new[] { "convert", "hpluv", color });
 
             cmd.Run(writerMock.Object);
-            var actual = writerMock.Invocations[0].Arguments[0];
+            var actual = writerMock.Invocations[index: 0].Arguments[index: 0];
 
             Assert.Equal(expected, actual);
         }

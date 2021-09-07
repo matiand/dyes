@@ -1,5 +1,3 @@
-using System;
-
 namespace Dyes.Commands
 {
     [Usage("-v, --version, version", "Print version of this program")]

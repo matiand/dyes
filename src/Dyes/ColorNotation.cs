@@ -22,20 +22,20 @@ namespace Dyes
 
         private class HexType : ColorNotation
         {
-            public HexType() : base("hex", 1)
+            public HexType() : base("hex", value: 1)
             {
             }
 
             public override string Stringify(Color color)
             {
-                var hexColor = new Rgb {R = color.R, G = color.G, B = color.B}.To<Hex>();
+                var hexColor = new Rgb { R = color.R, G = color.G, B = color.B }.To<Hex>();
                 return hexColor.Code;
             }
         }
 
         private class RgbType : ColorNotation
         {
-            public RgbType() : base("rgb", 2)
+            public RgbType() : base("rgb", value: 2)
             {
             }
 
@@ -47,20 +47,20 @@ namespace Dyes
 
         private class HslType : ColorNotation
         {
-            public HslType() : base("hsl", 3)
+            public HslType() : base("hsl", value: 3)
             {
             }
 
             public override string Stringify(Color color)
             {
                 return
-                    $"hsl({color.GetHue():N0}, {(color.GetSaturation() * 100):N0}%, {(color.GetBrightness() * 100):N0}%)";
+                    $"hsl({color.GetHue():N0}, {color.GetSaturation() * 100:N0}%, {color.GetBrightness() * 100:N0}%)";
             }
         }
 
         private class HsluvType : ColorNotation
         {
-            public HsluvType() : base("hsluv", 4)
+            public HsluvType() : base("hsluv", value: 4)
             {
             }
 
@@ -68,14 +68,14 @@ namespace Dyes
             {
                 // RgbToHsluv requires rgb values in 0-1 range
                 var hslColor = HsluvConverter.RgbToHsluv(new List<double>
-                    {color.R / 256.0, color.G / 256.0, color.B / 256.0});
-                return $"hsluv({hslColor[0]:N0}, {hslColor[1]:N0}%, {hslColor[2]:N0}%)";
+                    { color.R / 256.0, color.G / 256.0, color.B / 256.0 });
+                return $"hsluv({hslColor[index: 0]:N0}, {hslColor[index: 1]:N0}%, {hslColor[index: 2]:N0}%)";
             }
         }
 
         private class HpluvType : ColorNotation
         {
-            public HpluvType() : base("hpluv", 5)
+            public HpluvType() : base("hpluv", value: 5)
             {
             }
 
@@ -83,8 +83,8 @@ namespace Dyes
             {
                 // RgbToHpluv requires rgb values in 0-1 range
                 var hplColor = HsluvConverter.RgbToHpluv(new List<double>
-                    {color.R / 256.0, color.G / 256.0, color.B / 256.0});
-                return $"hpluv({hplColor[0]:N0}, {hplColor[1]:N0}, {hplColor[2]:N0}%)";
+                    { color.R / 256.0, color.G / 256.0, color.B / 256.0 });
+                return $"hpluv({hplColor[index: 0]:N0}, {hplColor[index: 1]:N0}, {hplColor[index: 2]:N0}%)";
             }
         }
     }
