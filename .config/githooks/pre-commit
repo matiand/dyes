@@ -10,10 +10,10 @@ set -eu
 
 echo "Launching pre-commit hook that runs JetBrains CodeCleanup cli tool"
 
-staged_files=$(git diff --name-only --cached --diff-filter=d)
-# skip if there are no csharp files in index
-if ! git diff --name-only --staged | grep -Eq '(\.cshtml|\.cs)$'; then
-    echo "Skipping code formatting, no csharp files were found in index"
+# skip if there are no csharp files in index (--diff-filter=d means to look at not deleted files only)
+staged_files=$(git diff --name-only --staged --diff-filter=d)
+if ! echo "$staged_files" | grep -Eq '(\.cshtml|\.cs)$'; then
+    echo "Skipping code cleanup, no csharp files were found in index"
     sleep 1
     exit 0
 fi
@@ -25,8 +25,9 @@ dotnet tool restore
 include_string=$(echo "$staged_files" | sed ':a;N;$!ba;s/\n/;/g')
 dotnet jb cleanupcode *.sln --include="$include_string" --verbosity=ERROR
 
-echo "Restaging files"
-echo "$staged_files" | xargs -t -l git add
+echo "Restaging files that were affected"
+restaged_files=$(git diff --name-only)
+echo "$restaged_files" | xargs -t -l git add
 
 echo "Precommit hook finished"
 sleep 1

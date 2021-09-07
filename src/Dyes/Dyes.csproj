@@ -5,7 +5,6 @@
         <TargetFramework>net5.0</TargetFramework>
         <AssemblyVersion>0.0.1</AssemblyVersion>
         <AssemblyName>dyes</AssemblyName>
-        <EnableCodeStyleInBuild>true</EnableCodeStyleInBuild>
     </PropertyGroup>
 
     <ItemGroup>
