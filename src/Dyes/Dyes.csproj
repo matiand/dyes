@@ -3,8 +3,23 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net5.0</TargetFramework>
-        <AssemblyVersion>0.0.1</AssemblyVersion>
-        <AssemblyName>dyes</AssemblyName>
+
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <FileVersion>1.0.0</FileVersion>
+        <InformationalVersion>1.0.0-alpha2</InformationalVersion>
+        <PackageVersion>1.0.0-alpha2</PackageVersion>
+
+        <PackageId>dyes</PackageId>
+        <Authors>itsresool</Authors>
+        <Description>.NET tool for working with colors. Requires .NET 5 runtime</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Copyright>Copyright (c) 2021 itsresool</Copyright>
+        <RepositoryUrl>https://github.com/itsresool/dyes</RepositoryUrl>
+        <PackageTags>dyes;colors;hsl</PackageTags>
+
+        <PackAsTool>true</PackAsTool>
+        <ToolCommandName>dyes</ToolCommandName>
+        <PackageOutputPath>./nupkg</PackageOutputPath>
     </PropertyGroup>
 
     <ItemGroup>

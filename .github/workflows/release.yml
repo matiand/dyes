@@ -1,0 +1,23 @@
+name: Release package to nuget
+
+on: [release]
+
+env:
+  DOTNET_VERSION: 5.0.x
+
+jobs:
+  Push-To-Nuget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET Core SDK ${{ env.DOTNET_VERSION }}
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Package app
+        run: dotnet pack --configuration Release
+
+      - name: Push to Nuget
+        run: dotnet nuget push src/Dyes/nupkg/* --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
