@@ -17,9 +17,11 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
+          source-url: https://api.nuget.org/v3/index.json
 
       - name: Package app
         run: dotnet pack --configuration Release
 
       - name: Push to Nuget
-        run: dotnet nuget push src/Dyes/nupkg/* --api-key ${{ secrets.NUGET_API_KEY }} --source nuget
+        run: |
+          dotnet nuget push src/Dyes/nupkg/* --api-key ${{ secrets.NUGET_API_KEY }}
