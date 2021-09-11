@@ -22,13 +22,14 @@ After successful install **dyes** should be in your path.
 ## Usage
 
 Supported colors:
-Notation | Color
---- | ---
-hex | ffee12, acf, #ffee12, #ACF
-rgb | rgb(0, 0, 0), rgb(20 40 60)
-hsl | hsl(12, 24%, 48%), hsl(12 24% 48%)
-hsluv | hsluv(12, 24%, 48%), hsluv(12 24% 48%)
-hpluv | hpluv(12, 24%, 48%), hpluv(12 24% 48%)
+
+| Notation | Color                                  |
+| -------- | -------------------------------------- |
+| hex      | ffee12, acf, #ffee12, #ACF             |
+| rgb      | rgb(0, 0, 0), rgb(20 40 60)            |
+| hsl      | hsl(12, 24%, 48%), hsl(12 24% 48%)     |
+| hsluv    | hsluv(12, 24%, 48%), hsluv(12 24% 48%) |
+| hpluv    | hpluv(12, 24%, 48%), hpluv(12 24% 48%) |
 
 Always put colors in quotes. Mosts shells treat **#**, **(** and **)** symbols as part of their syntax and will fail to parse your command.
 
