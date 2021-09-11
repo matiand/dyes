@@ -1,3 +1,6 @@
+using System.Diagnostics;
+using System.Reflection;
+
 namespace Dyes.Commands
 {
     [Usage("-v, --version, version", "Print version of this program")]
@@ -5,7 +8,7 @@ namespace Dyes.Commands
     {
         public void Run(IWriter writer, bool isOutputRedirected)
         {
-            var version = typeof(Program).Assembly.GetName().Version;
+            var version = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
             writer.WriteLine(version);
         }
     }
