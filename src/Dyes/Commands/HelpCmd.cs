@@ -14,7 +14,8 @@ namespace Dyes.Commands
 
         public static void PrintUsage(IWriter writer)
         {
-            var programName = typeof(Program).Assembly.GetName().Name;
+            var programName = Assembly.GetExecutingAssembly()
+                .GetCustomAttribute<AssemblyTitleAttribute>()!.Title;
             writer.WriteLine($"Usage of {programName}:");
 
             foreach (var usage in GetCmdUsages())
