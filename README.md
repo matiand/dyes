@@ -9,7 +9,7 @@ Here it is in action:
 
 ## Installation
 
-Installation is available via [NuGet](https://www.nuget.org/packages/dyes). You need .NET 5 to use this tool.
+Installation is available via [NuGet](https://www.nuget.org/packages/dyes). You need .NET 6 to use this tool.
 
 Run this command:
 

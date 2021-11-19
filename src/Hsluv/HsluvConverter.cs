@@ -5,7 +5,7 @@ using System.Globalization;
 namespace Hsluv
 {
     // This code comes from hsluv-csharp project
-    // It works on .NET 5.0 instead of .NET Framework 4.0
+    // It works on .NET 6.0 instead of .NET Framework 4.0
     // I needed to do this, because the 'dotnet pack' command was failing
     public class HsluvConverter
     {
